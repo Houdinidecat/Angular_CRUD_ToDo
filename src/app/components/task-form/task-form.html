@@ -1,1 +1,39 @@
-<p>task-form works!</p>
+<section class="panel form-panel" aria-labelledby="form-heading">
+  <p class="section-kicker">{{ task() ? 'ACTUALIZAR' : 'CREAR' }}</p>
+  <h2 id="form-heading">{{ task() ? 'Editar tarea' : 'Nueva tarea' }}</h2>
+  <p class="panel-description">
+    {{
+      task()
+        ? 'Cambia el nombre de la tarea seleccionada.'
+        : 'Empieza con algo que quieras completar.'
+    }}
+  </p>
+  <form (ngSubmit)="submit()" novalidate>
+    <label for="task-title">Nombre de la tarea</label>
+    <input
+      id="task-title"
+      name="title"
+      type="text"
+      [ngModel]="title()"
+      (ngModelChange)="title.set($event); error.set('')"
+      [maxlength]="maxLength"
+      [attr.aria-invalid]="error() ? 'true' : null"
+      aria-describedby="title-help title-error"
+      placeholder="Ej. Preparar presentación de Angular"
+      autocomplete="off"
+      required
+    />
+    <p id="title-help" class="field-help">Un nombre claro, de hasta {{ maxLength }} caracteres.</p>
+    <p id="title-error" class="field-error" role="alert">{{ error() }}</p>
+    <div class="form-actions">
+      <button type="submit" class="action-button primary">
+        {{ task() ? 'Guardar cambios' : 'Agregar tarea' }}
+      </button>
+      @if (task()) {
+        <button type="button" class="action-button secondary" (click)="cancelled.emit()">
+          Cancelar
+        </button>
+      }
+    </div>
+  </form>
+</section>

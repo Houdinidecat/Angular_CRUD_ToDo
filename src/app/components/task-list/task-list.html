@@ -1,1 +1,33 @@
-<p>task-list works!</p>
+<section class="panel list-panel" aria-labelledby="list-heading">
+  <div class="list-heading">
+    <div>
+      <p class="section-kicker">LEER Y ADMINISTRAR</p>
+      <h2 id="list-heading">Mis tareas</h2>
+    </div>
+    <span class="task-count"
+      >{{ tasks().length }} {{ tasks().length === 1 ? 'tarea' : 'tareas' }}</span
+    >
+  </div>
+  @if (tasks().length) {
+    <ul class="task-list">
+      @for (task of tasks(); track task.id) {
+        <li>
+          <app-task
+            [task]="task"
+            [editing]="editingId() === task.id"
+            (edit)="edit.emit($event)"
+            (remove)="remove.emit($event)"
+          />
+        </li>
+      }
+    </ul>
+  } @else {
+    <div class="empty-state">
+      <span class="empty-symbol" aria-hidden="true">＋</span>
+      <h3>Tu lista está vacía</h3>
+      <p>
+        Agrega tu primera tarea con el formulario.<br />Después podrás editarla o eliminarla aquí.
+      </p>
+    </div>
+  }
+</section>

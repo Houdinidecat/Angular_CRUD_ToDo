@@ -1,0 +1,42 @@
+.task-row {
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.is-editing {
+  background: #eff8f4;
+  box-shadow: inset 3px 0 var(--accent);
+}
+.task-content {
+  min-width: 0;
+}
+.task-number {
+  color: var(--muted);
+  font-size: 0.67rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+.editing-label {
+  color: var(--accent);
+}
+h3 {
+  overflow-wrap: anywhere;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 6px 0 0;
+  line-height: 1.6;
+}
+.task-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .task-row {
+    align-items: start;
+    flex-direction: column;
+    gap: 14px;
+  }
+}

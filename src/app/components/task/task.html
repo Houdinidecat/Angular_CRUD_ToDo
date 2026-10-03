@@ -1,1 +1,29 @@
-<p>task works!</p>
+<article class="task-row" [class.is-editing]="editing()">
+  <div class="task-content">
+    <span class="task-number"
+      >TAREA #{{ task().id }}
+      @if (editing()) {
+        <span class="editing-label">· En edición</span>
+      }
+    </span>
+    <h3>{{ task().title }}</h3>
+  </div>
+  <div class="task-actions">
+    <button
+      type="button"
+      class="action-button secondary compact"
+      [attr.aria-label]="'Editar tarea: ' + task().title"
+      (click)="edit.emit(task())"
+    >
+      Editar
+    </button>
+    <button
+      type="button"
+      class="action-button danger compact"
+      [attr.aria-label]="'Eliminar tarea: ' + task().title"
+      (click)="remove.emit(task().id)"
+    >
+      Eliminar
+    </button>
+  </div>
+</article>

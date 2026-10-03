@@ -1,0 +1,46 @@
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.topbar-content {
+  max-width: 1080px;
+  margin: auto;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+.brand-mark {
+  background: var(--accent);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+}
+.brand-light {
+  font-weight: 400;
+  color: var(--muted);
+}
+.project-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+@media (max-width: 500px) {
+  .topbar-content {
+    padding: 16px 20px;
+  }
+  .project-label {
+    display: none;
+  }
+}
